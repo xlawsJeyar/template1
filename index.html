@@ -24,6 +24,21 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+.countdown-timer {
+    font-size: 60px;           /* malaking numero */
+    font-weight: 900;          /* extra bold */
+    color: #e63946;            /* romantic red/pink color */
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .countdown-timer {
+        font-size: 40px;       /* responsive sa mobile */
+    }
+}
+</style>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
@@ -314,6 +329,15 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-8 text-center">
+                <h3 class="mb-4">Countdown to Our Wedding</h3>
+                <div id="countdown" class="countdown-timer"></div>
+                </div>
+            </div>
+
+
         </div>
     </div>
     <!-- Event End -->
@@ -991,6 +1015,29 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+// Set the date we're counting down to
+const weddingDate = new Date("April 10, 2026 16:00:00").getTime();
+
+// Update the countdown every 1 second
+const countdownTimer = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = weddingDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML = 
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+    if (distance < 0) {
+        clearInterval(countdownTimer);
+        document.getElementById("countdown").innerHTML = "The wedding has started!";
+    }
+}, 1000);
+</script>
 </body>
 
 </html>
