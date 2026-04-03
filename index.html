@@ -723,7 +723,11 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center">
                     <h1 class="font-secondary font-weight-normal text-muted mb-3">Use our wedding hashtag to share your favorite moments on social media!</h1>
-                    <h4 class="mb-3">#JEFREYandHAZZELWEDDING</h4>
+                    <h4 class="mb-3">
+                         <a href="#" id="shareHashtag" style="text-decoration:none; color:#111e4b; cursor:pointer;">
+                             #JEFREYandHAZZELWEDDING
+                         </a>
+                    </h4>
                 </div>
             </div>
         </div>
@@ -796,6 +800,14 @@ const countdownTimer = setInterval(function() {
         document.getElementById("countdown").innerHTML = "The wedding has started!";
     }
 }, 1000);
+
+ document.getElementById("shareHashtag").addEventListener("click", function(e) {
+    e.preventDefault();
+    const text = "https://xlawsjeyar.github.io/template1/index.html";
+    navigator.clipboard.writeText(text).then(() => {
+        alert("Link copied! Share na sa friends mo 💖");
+    });
+});
 </script>
 </body>
 
